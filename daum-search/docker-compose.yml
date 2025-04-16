@@ -1,0 +1,9 @@
+version: '3'
+services:
+  mcp-server-daum-search:
+    build: .
+    ports:
+      - "3100:3100"
+    environment:
+      - KAKAO_API_KEY=${KAKAO_API_KEY}
+    restart: unless-stopped 

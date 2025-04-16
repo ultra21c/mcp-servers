@@ -85,7 +85,40 @@ npm start
 #### Docker로 설치한 경우:
 
 ```bash
+# 이미지 다운로드 및 실행
 docker run -e KAKAO_API_KEY="your_kakao_api_key" ultra21c/mcp-server-daum-search
+```
+
+#### Docker로 직접 빌드하여 실행:
+
+```bash
+# 저장소 클론 (이미 클론한 경우 건너뛰기)
+git clone https://github.com/ultra21c/mcp-servers.git
+cd mcp-servers/src/daum-search
+
+# Docker 이미지 빌드
+docker build -t mcp-server-daum-search .
+
+# Docker 컨테이너 실행
+docker run -p 3100:3100 -e KAKAO_API_KEY="your_kakao_api_key" mcp-server-daum-search
+```
+
+Docker Compose를 사용하는 경우, `docker-compose.yml` 파일을 다음과 같이 작성할 수 있습니다:
+
+```yaml
+version: '3'
+services:
+  mcp-server-daum-search:
+    build: .
+    ports:
+      - "3100:3100"
+    environment:
+      - KAKAO_API_KEY=your_kakao_api_key
+```
+
+그런 다음 다음 명령으로 실행합니다:
+```bash
+docker-compose up -d
 ```
 
 ### 3. Claude Desktop에서 사용하기
@@ -102,6 +135,28 @@ docker run -e KAKAO_API_KEY="your_kakao_api_key" ultra21c/mcp-server-daum-search
       "args": [
         "-y",
         "@ultra21c/mcp-server-daum-search"
+      ],
+      "env": {
+        "KAKAO_API_KEY": "YOUR_KAKAO_REST_API_KEY_HERE"
+      }
+    }
+  }
+}
+```
+
+#### 로컬에서 사용시
+* build
+```bash
+npm run build
+```
+* config
+```json
+{
+  "mcpServers": {
+    "daum-search": {
+      "command": "node",
+      "args": [
+        "/Users/ultra21c/working/my-mcp-servers/daum-search/dist/index.js"
       ],
       "env": {
         "KAKAO_API_KEY": "YOUR_KAKAO_REST_API_KEY_HERE"

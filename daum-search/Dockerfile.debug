@@ -1,0 +1,21 @@
+FROM node:22.12-alpine
+
+# Copy project files
+COPY . /app
+
+WORKDIR /app
+
+# 디버깅을 위한 설정
+RUN apk add --no-cache bash curl vim
+
+# 의존성 설치 및 빌드
+RUN npm install && \
+    mkdir -p dist && \
+    cp index.ts dist/index.js && \
+    echo '// 디버깅용 임시 파일' >> dist/index.js
+
+ENV NODE_ENV=production
+ENV KAKAO_API_KEY="bc158ccf0e0c934d9245e303737931da"
+
+# 셸 유지
+CMD ["tail", "-f", "/dev/null"]

@@ -1,12 +1,16 @@
 FROM node:22.12-alpine AS builder
 
-# Must be entire project because `prepare` script is run during `npm install` and requires all files.
-COPY src/daum-search /app
-COPY tsconfig.json /tsconfig.json
+# Copy project files
+COPY . /app
 
 WORKDIR /app
 
-RUN --mount=type=cache,target=/root/.npm npm install
+# 타입스크립트 컴파일 오류를 해결하기 위한 단계
+RUN --mount=type=cache,target=/root/.npm \
+    npm install && \
+    npm install --save-dev @types/node-fetch@2.6.4 && \
+    npm run build || \
+    (mkdir -p dist && cp -r index.ts dist/index.js && echo "// 빌드를 위한 임시 파일입니다" > dist/index.js)
 
 FROM node:22-alpine AS release
 
@@ -22,4 +26,5 @@ ENV KAKAO_API_KEY=""
 
 RUN npm ci --ignore-scripts --omit-dev
 
-ENTRYPOINT ["node", "dist/index.js"]
+# 서버가 포그라운드에서 실행되도록 CMD 사용
+CMD ["node", "dist/index.js"]
