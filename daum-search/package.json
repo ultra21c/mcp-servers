@@ -1,13 +1,17 @@
 {
-  "name": "@ultra21c/mcp-server-daum-search",
-  "version": "0.6.11",
-  "description": "MCP server for Daum Search API integration",
+  "name": "daum-search-mcp",
+  "version": "1.0.0",
+  "description": "Daum Search API integration for Model Context Protocol - 다음 검색을 MCP로 사용하세요",
   "license": "MIT",
-  "author": "ultra21c",
+  "author": {
+    "name": "ultra21c",
+    "url": "https://github.com/ultra21c"
+  },
   "homepage": "https://github.com/ultra21c/mcp-servers/tree/main/src/daum-search",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ultra21c/mcp-servers.git"
+    "url": "https://github.com/ultra21c/mcp-servers.git",
+    "directory": "src/daum-search"
   },
   "keywords": [
     "mcp",
@@ -19,55 +23,63 @@
     "server",
     "claude",
     "claude-desktop",
-    "search-api",
+    "korean",
     "web-search",
-    "ai-search",
+    "ai",
+    "assistant",
+    "search-engine",
     "korean-search",
     "daum-search",
     "kakao-search",
-    "mcp-kakao-server",
-    "mcp-kakao-search-server",
-    "kakaosearch",
-    "daumsearch",
-    "daumkakao-search",
-    "dakaosearch",
-    "mcp-server-kakao"
+    "mcp-server",
+    "npx"
   ],
-  "bugs": "https://github.com/ultra21c/mcp-servers/issues",
+  "bugs": {
+    "url": "https://github.com/ultra21c/mcp-servers/issues"
+  },
   "type": "module",
+  "main": "dist/index.js",
   "bin": {
-    "mcp-server-daum-search": "dist/index.js"
+    "daum-search-mcp": "dist/index.js"
   },
   "files": [
-    "dist",
+    "dist/**/*",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "package.json"
   ],
   "scripts": {
     "build": "tsc && shx chmod +x dist/*.js",
+    "dev": "tsx src/index.ts",
     "prepare": "npm run build",
     "watch": "tsc --watch",
     "start": "node dist/index.js",
     "test": "jest",
     "lint": "eslint . --ext .ts",
-    "prepublishOnly": "npm run build"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "clean": "shx rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run lint && npm run test && npm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.0.1",
-    "node-fetch": "^2.6.9"
+    "@modelcontextprotocol/sdk": "^1.0.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
-    "@types/node": "^20.11.0",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
-    "eslint": "^8.0.0",
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
     "jest": "^29.7.0",
     "shx": "^0.3.4",
     "ts-jest": "^29.3.1",
+    "tsx": "^4.0.0",
     "typescript": "^5.6.2"
   },
   "engines": {
-    "node": ">=20.16.0"
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
