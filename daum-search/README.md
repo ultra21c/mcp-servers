@@ -8,10 +8,10 @@ Daum 검색 API를 통합한 MCP 서버 구현체로, 웹, 동영상, 이미지,
 
 ```bash
 # 전역 설치
-npm install -g @ultra21c/mcp-server-daum-search
+npm install -g daum-search-mcp
 
 # 프로젝트에 직접 설치
-npm install @ultra21c/mcp-server-daum-search
+npm install daum-search-mcp
 ```
 
 ### npx로 직접 실행
@@ -21,7 +21,7 @@ npm install @ultra21c/mcp-server-daum-search
 export KAKAO_API_KEY="your_kakao_api_key"
 
 # npx로 실행
-npx @ultra21c/mcp-server-daum-search
+npx daum-search-mcp
 ```
 
 ### 로컬 설치
@@ -86,7 +86,7 @@ npm start
 
 ```bash
 # 이미지 다운로드 및 실행
-docker run -e KAKAO_API_KEY="your_kakao_api_key" ultra21c/mcp-server-daum-search
+docker run -p 3100:3100 -e KAKAO_API_KEY="your_kakao_api_key" daum-search-mcp
 ```
 
 #### Docker로 직접 빌드하여 실행:
@@ -97,10 +97,10 @@ git clone https://github.com/ultra21c/mcp-servers.git
 cd mcp-servers/src/daum-search
 
 # Docker 이미지 빌드
-docker build -t mcp-server-daum-search .
+docker build -t daum-search-mcp .
 
 # Docker 컨테이너 실행
-docker run -p 3100:3100 -e KAKAO_API_KEY="your_kakao_api_key" mcp-server-daum-search
+docker run -p 3100:3100 -e KAKAO_API_KEY="your_kakao_api_key" daum-search-mcp
 ```
 
 Docker Compose를 사용하는 경우, `docker-compose.yml` 파일을 다음과 같이 작성할 수 있습니다:
@@ -108,7 +108,7 @@ Docker Compose를 사용하는 경우, `docker-compose.yml` 파일을 다음과 
 ```yaml
 version: '3'
 services:
-  mcp-server-daum-search:
+  daum-search-mcp:
     build: .
     ports:
       - "3100:3100"
@@ -134,7 +134,7 @@ docker-compose up -d
       "command": "npx",
       "args": [
         "-y",
-        "@ultra21c/mcp-server-daum-search"
+        "daum-search-mcp@latest"
       ],
       "env": {
         "KAKAO_API_KEY": "YOUR_KAKAO_REST_API_KEY_HERE"
