@@ -165,6 +165,7 @@ npm run build
   }
 }
 ```
+  * Ref. [how to build mcp-server with typescript sdk](https://dev.to/shadid12/how-to-build-mcp-servers-with-typescript-sdk-1c28)
 
 
 ## 제공되는 검색 기능
