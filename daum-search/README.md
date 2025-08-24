@@ -156,7 +156,7 @@ npm run build
     "daum-search": {
       "command": "node",
       "args": [
-        "/Users/ultra21c/working/my-mcp-servers/daum-search/dist/index.js"
+        "/your-full-path/mcp-servers/daum-search/dist/index.js"
       ],
       "env": {
         "KAKAO_API_KEY": "YOUR_KAKAO_REST_API_KEY_HERE"
@@ -243,7 +243,7 @@ npm run build
 ```bash
 # 저장소 클론
 git clone https://github.com/ultra21c/mcp-servers.git
-cd mcp-servers/src/daum-search
+cd mcp-servers/daum-search
 
 # 의존성 설치
 npm install
