@@ -28,3 +28,19 @@
 ## 설치 및 실행
 
 각 서버 디렉토리 내의 README.md 파일을 참조하세요.
+
+
+## submodule 추가 하기
+```bash
+# 메인 repository에서
+cd mcp-servers
+
+# google-form 추가
+git submodule add https://github.com/matteoantoci/google-forms-mcp.git google-forms-mcp
+
+# 다른 MCP servers도 추가
+git submodule add https://github.com/taylorwilsdon/google_workspace_mcp.git google-workspace-mcp
+
+# submodule 초기화
+git submodule update --init --recursive
+```

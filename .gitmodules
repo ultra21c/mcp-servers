@@ -1,0 +1,3 @@
+[submodule "google-forms-mcp"]
+	path = google-forms-mcp
+	url = https://github.com/matteoantoci/google-forms-mcp.git
