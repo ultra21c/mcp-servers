@@ -1,3 +1,6 @@
 [submodule "google-forms-mcp"]
 	path = google-forms-mcp
 	url = https://github.com/matteoantoci/google-forms-mcp.git
+[submodule "obsidian-mcp"]
+	path = obsidian-mcp
+	url = https://github.com/StevenStavrakis/obsidian-mcp
