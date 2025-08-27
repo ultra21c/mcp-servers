@@ -4,3 +4,6 @@
 [submodule "obsidian-mcp"]
 	path = obsidian-mcp
 	url = https://github.com/StevenStavrakis/obsidian-mcp
+[submodule "n8n-mcp"]
+	path = n8n-mcp
+	url = https://github.com/czlonkowski/n8n-mcp.git
